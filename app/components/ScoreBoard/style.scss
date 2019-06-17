@@ -1,0 +1,11 @@
+@import '../../styles/common';
+
+.scoreBoard {
+  right: 20px;
+  top: 20px;
+  color: $black;
+  font-weight: $heavierFw;
+  text-align: right;
+  text-transform: uppercase;
+  position: absolute;
+}

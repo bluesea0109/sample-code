@@ -1,0 +1,148 @@
+@import '../../styles/common';
+
+.menu {
+  text-transform: uppercase;
+  font-weight: $lightFw;
+
+  a {
+    font-size: 13px;
+    color: $darkShadowColor;
+    cursor: pointer;
+    @include borderRadius(0);
+    @include noTextDecoration();
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  hr {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-top: $hrBorderWidth solid $lightWhite;
+  }
+
+  &__opened {
+    background: transparent;
+    z-index: 102;
+    @include fixedFill();
+  }
+
+  &__content {
+    height: 100%;
+    background: $white;
+    z-index: 200;
+    @include transition(all, $fastTrans);
+    @include fixedTopLeft();
+
+    ul {
+      background: $white;
+      height: 100%;
+      padding: 12px 25px 12px 30px;
+
+      overflow-x: hidden;
+      overflow-y: overlay;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(200, 200, 200, 0.7) !important;
+      }
+
+      @include boxShadow(15px, $lightShadowColor);
+
+      li {
+        list-style-type: none;
+        padding: 10px 0;
+      }
+    }
+
+    &--hidden {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  &--active {
+    list-style-type: circle !important;
+  }
+
+  &__language {
+    a {
+      font-weight: $lighterFw;
+    }
+  }
+
+  &__tab {
+    position: absolute;
+    height: 85px;
+    left: 100%;
+    bottom: 20%;
+    padding: 7px;
+    background: $white;
+    box-sizing: content-box;
+    cursor: pointer;
+    @include borderRadiusDetail(0, 5px, 5px, 0);
+    @include transition(all, $fastTrans);
+
+    &:hover {
+      &:before {
+        @include boxShadow($boxShadowBlur, $normalShadowColor);
+      }
+    }
+
+    &:before,
+    &:after {
+      content: ' ';
+      background: $white;
+      display: block;
+      z-index: -1;
+      @include transition(all, $fastTrans);
+      @include absoluteFill();
+      @include boxShadow($boxShadowBlur, $lightShadowColor);
+      @include borderRadiusDetail(0, 5px, 5px, 0);
+    }
+
+    &:after {
+      @include noBoxShadow();
+    }
+
+    img {
+      position: relative;
+      width: auto;
+      z-index: 3;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: #{$tablet - 1px}) {
+    &__tab {
+      display: none;
+    }
+  }
+}
+
+.logo {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: auto;
+    z-index: 102;
+    position: relative;
+    @include transition(all, $fastTrans);
+    @include borderRadius(20px);
+    @include boxShadow($boxShadowBlur, $lightShadowColor);
+  }
+
+  &:hover img {
+    @include boxShadow($boxShadowBlur, $normalShadowColor);
+  }
+}

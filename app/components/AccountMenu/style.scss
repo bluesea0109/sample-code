@@ -1,0 +1,106 @@
+@import '../../styles/common';
+
+.accountMenu {
+  background: $white;
+  width: 100%;
+  max-height: 1000px;
+  padding-bottom: 8px;
+  position: relative;
+  cursor: default;
+  @include transition(all, $fastTrans);
+
+  button {
+    font-weight: $lightFw;
+  }
+
+  &--hidden {
+    max-height: 0px;
+    padding: 0;
+    * {
+      display: none;
+    }
+  }
+
+  &__warning {
+    margin: 15px 8px;
+    user-select: text;
+    cursor: text;
+  }
+
+  &__items {
+    margin-left: 30%;
+    padding: 0 35px;
+    z-index: 102;
+  }
+
+  &__content {
+    padding: 12% 30px 20px 50px;
+    max-height: 1000;
+    @include transition(all, $fastTrans);
+
+    &--hidden {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      * {
+        display: none;
+      }
+    }
+  }
+
+  &__deleteButton {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+  }
+
+  &__deleteForm {
+    padding: 10px 0;
+    max-height: 1000px;
+    @include transition(all, $fastTrans);
+
+    &--hidden {
+      max-height: 0;
+      padding: 0;
+      * {
+        display: none;
+      }
+    }
+
+    input {
+      margin-top: 8px;
+      padding: 8px;
+      width: 100%;
+      border: 0.5px solid $lightWhite;
+      color: $thirdBlack;
+      font-weight: $lighterFw;
+    }
+  }
+
+  &__deleteFormButtons {
+    text-align: right;
+
+    button {
+      margin-left: 10px;
+      padding: 5px 8px;
+      font-size: 13px;
+
+      &.active {
+        border: 0.5px solid $brochureArrowColor;
+        background: $secondaryWhite;
+        font-weight: $sectionTitleFw;
+      }
+    }
+  }
+
+  .error {
+    padding: 0;
+    margin: 8px 8px 10px 8px !important;
+  }
+}

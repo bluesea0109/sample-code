@@ -1,0 +1,16 @@
+@import '../../../node_modules/react-responsive-carousel/lib/styles/carousel.min.css';
+
+.carousel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: calc(100% + 10px);
+  height: 100%;
+  background: #fff;
+  z-index: 101;
+
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+  }
+}

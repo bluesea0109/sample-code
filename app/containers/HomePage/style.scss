@@ -1,0 +1,184 @@
+@import '../../styles/common';
+
+.homePage {
+  padding: 0;
+  margin: 0;
+  background: $white;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  &__row {
+    margin: 0 -4px;
+  }
+
+  &__col {
+    padding: 0 4px;
+    position: relative;
+  }
+
+  img {
+    cursor: pointer;
+  }
+
+  input,
+  textarea {
+    cursor: text;
+    resize: none;
+  }
+
+  textarea {
+    overflow-y: hidden;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: $placeholderColor;
+    opacity: $darkerOpacity;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    @include insetBoxShadow(1000px, $white);
+    @include backgroundColor($white);
+  }
+
+  .error {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 80px);
+    color: $errorColor;
+    background: $white;
+    font-weight: $lighterFw;
+  }
+
+  @media (min-width: $tablet) {
+    .homePage__col:first-child {
+      .postLinkBtn {
+        left: 60px;
+      }
+      .postLinkBar {
+        left: 50px;
+        width: calc(100% - 72px);
+      }
+      .postInfo {
+        padding-left: 60px;
+      }
+
+      .postTitle,
+      .postTitleEdit {
+        left: 30px;
+        width: calc(100% - 30px);
+      }
+      .postButtons,
+      .postContent {
+        padding-left: 60px;
+      }
+
+      .textPost {
+        .postContent {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .postButtons {
+    button,
+    span,
+    .postLang select {
+      font-size: 11px;
+    }
+    button {
+      margin-top: 1px;
+    }
+  }
+}
+
+.createPostBtn {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  z-index: 50;
+
+  &--hidden {
+    display: none;
+    top: 70px;
+  }
+
+  .btnImage {
+    line-height: $noLH;
+    margin-right: 5px;
+    @include borderRadius(20px);
+
+    img {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .btnText {
+    text-transform: uppercase;
+  }
+
+  &--afterImage {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+
+    .btnImage {
+      background: $white;
+      padding: 5px;
+      @include boxShadow($boxShadowBlur, $lightShadowColor);
+      @include transition(all, $fastTrans);
+    }
+
+    .btnText {
+      color: $white;
+      font-weight: $heavyFw;
+      font-size: 15px;
+      @include textShadow($textShadowBlur, $lightShadowColor);
+      @include transition(all, $fastTrans);
+    }
+
+    &:hover {
+      .btnImage {
+        @include boxShadow($boxShadowBlur, $normalShadowColor);
+      }
+      .btnText {
+        @include textShadow($boxShadowBlur, $normalShadowColor);
+      }
+    }
+  }
+
+  &--afterText {
+    padding: 4px 8px;
+    border: 0.5px solid $white;
+    margin: 9px 0 8px 14px;
+
+    .btnText {
+      color: $darkShadowColor;
+      font-size: 13px;
+    }
+
+    .btnImage {
+      opacity: $darkOpacity;
+    }
+
+    &:hover {
+      .btnText {
+        color: $black;
+      }
+      .btnImage {
+        opacity: $darkerOpacity;
+      }
+    }
+  }
+}

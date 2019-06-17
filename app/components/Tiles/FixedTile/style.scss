@@ -1,0 +1,69 @@
+@import '../../../styles/common';
+
+.fixedTile {
+  position: relative;
+  margin-bottom: 8px;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 50%;
+  }
+
+  @media (max-width: #{$tablet - 1px }) {
+    &:before {
+      padding-top: 100%;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    transform: scale(1);
+    @include transition(all, $normalTrans);
+  }
+
+  &__content {
+    overflow: hidden;
+    cursor: pointer;
+    @include absoluteFill();
+    &:hover {
+      .fixedTile__image {
+        transform: scale($enlargeSize);
+      }
+    }
+
+    &:before {
+      content: '';
+      z-index: 1;
+      @include absoluteFill();
+      @include insetBoxShadow($boxShadowBlur, $normalShadowColor);
+    }
+  }
+
+  &__title {
+    margin-bottom: 0px;
+    padding: 19px 30px;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: $heavierFw;
+    line-height: $textLH;
+    @include vCenter();
+    @include textShadow($textShadowBlur, $lightShadowColor);
+  }
+
+  &__btn {
+    position: absolute;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    right: 15px;
+    bottom: 5px;
+    color: $white;
+    z-index: 10;
+    @include textShadow($textShadowBlur, $lightShadowColor);
+
+    &:hover {
+      color: $white;
+      @include textShadow($textShadowBlur, $normalShadowColor);
+    }
+  }
+}

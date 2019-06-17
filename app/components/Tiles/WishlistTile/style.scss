@@ -1,0 +1,66 @@
+@import '../../../styles/common';
+
+.wishlistTile {
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    transform: scale(1);
+    @include transition(all, $normalTrans);
+  }
+
+  &:hover img {
+    transform: scale($enlargeSize);
+  }
+
+  &:before {
+    content: '';
+    z-index: 3;
+    @include absoluteFill();
+    @include insetBoxShadow(8px, $normalShadowColor);
+  }
+
+  h2 {
+    padding: 19px 30px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    z-index: 4;
+    color: $white;
+    font-weight: $heavierFw;
+    line-height: $textLH;
+    @include vCenter();
+    @include textShadow($textShadowBlur, $lightShadowColor);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .wishlistRemoveBtn {
+    position: absolute;
+    top: initial;
+    bottom: 8px;
+    right: 8px;
+    line-height: $noLH;
+    z-index: 40;
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .hover {
+      position: absolute;
+      right: 0;
+      opacity: 0;
+      transition: all 0.1s;
+    }
+
+    &:hover {
+      .hover {
+        opacity: 1;
+      }
+    }
+  }
+}
